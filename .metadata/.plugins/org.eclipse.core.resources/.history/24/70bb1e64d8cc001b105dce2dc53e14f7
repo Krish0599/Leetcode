@@ -1,0 +1,26 @@
+package DynamicProgramming;
+
+public class _198_HouseRobber {
+	
+	private static int rob(int[] nums) {
+		if(nums==null || nums.length==0)return 0;
+		return helper(nums, 0,0);
+	}
+	
+	private static int helper(int[] nums, int index, int amount) {
+		//base
+		if(index>=nums.length)return amount;
+		//choose
+		int case1 = helper(nums, index+2,amount+nums[index]);
+		//dont choose
+		int case2 = helper(nums, index+1, amount);
+		return Math.max(case1, case2);
+	}
+
+	public static void main(String[] args) {
+		int[] nums = {1,2,3,1};
+		int result = rob(nums);
+		System.out.println(result);
+	}
+
+}

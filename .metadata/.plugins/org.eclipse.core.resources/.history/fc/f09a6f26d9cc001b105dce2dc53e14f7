@@ -1,0 +1,46 @@
+package DynamicProgramming;
+
+//Solution-1: Brute force -> recursion choose or dont choose
+/* T - O(2^n) ; S - (log n)
+* 1. For every house, we have option to choose or not choose
+* 2. return the max of both cases.
+*/
+
+public class _198_HouseRobber {
+	
+	
+	private static int rob(int[] nums) {
+		if(nums==null || nums.length==0)return 0;
+		int[][] dp = new int[nums.length][2];
+		dp[0][1] = nums[0];
+		for(int i=1;i<dp.length;i++) {
+			dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]);
+			dp[i][1] = dp[i-1][0]+nums[i-1];
+		}
+		return Math.max(dp[dp.length-1][0], dp[dp.length-1][1]);
+	}
+	/*
+	//Brute force -> recursion
+	private static int rob(int[] nums) {
+		if(nums==null || nums.length==0)return 0;
+		return helper(nums, 0,0);
+	}
+	
+	private static int helper(int[] nums, int index, int amount) {
+		//base
+		if(index>=nums.length)return amount;
+		//choose
+		int case1 = helper(nums, index+2,amount+nums[index]);
+		//dont choose
+		int case2 = helper(nums, index+1, amount);
+		return Math.max(case1, case2);
+	}
+	*/
+
+	public static void main(String[] args) {
+		int[] nums = {1,2,3,1};
+		int result = rob(nums);
+		System.out.println(result);
+	}
+
+}

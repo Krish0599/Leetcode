@@ -1,0 +1,15 @@
+package Hashing;
+
+import java.util.List;
+
+public class _49_GroupAnagrams {
+	
+	
+
+	public static void main(String[] args) {
+		String [] strs = {"eat","tea","tan","ate","nat","bat"};
+		List<List<String>> result = groupAnagrams(strs);
+		System.out.println(result);
+	}
+
+}

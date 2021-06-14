@@ -1,0 +1,11 @@
+package Hashing;
+
+public class _525_ContiguousArray {
+
+	public static void main(String[] args) {
+		int[] nums = {0,1,0};
+		int result = findMaxLength(nums);
+		System.out.println(result);
+	}
+
+}

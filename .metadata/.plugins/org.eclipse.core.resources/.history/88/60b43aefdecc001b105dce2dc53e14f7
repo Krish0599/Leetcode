@@ -1,0 +1,11 @@
+package DynamicProgramming;
+
+public class _740_DeleteAndEarn {
+
+	public static void main(String[] args) {
+		int[] nums = {1,2,3,1};
+		int result = rob(nums);
+		System.out.println(result);
+	}
+
+}

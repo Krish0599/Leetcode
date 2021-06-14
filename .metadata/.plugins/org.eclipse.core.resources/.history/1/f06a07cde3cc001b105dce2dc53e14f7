@@ -1,0 +1,26 @@
+package DynamicProgramming;
+
+public class _256_PaintHouse {
+	
+	private static int minCost(int[][] costs) {
+		if(costs==null || costs.length==0 || costs[0].length==0)return 0;
+		int case1 = helper(costs, 0,0,0);
+		int case2 = helper(costs, 0,0,1);
+		int case3 = helper(costs, 0,0,2);
+	}
+	private static int helper(int[][] costs, int row, int cost, int lastColor) {
+		//base
+		
+		//logic
+		if(lastColor == 0) {
+			int case1 = Math.min(helper(costs, row+1, cost+costs[row][1], 1), helper(costs,row+1,cost+costs[row][2],2));
+		}
+	}
+
+	public static void main(String[] args) {
+		int[][] costs = {{17,2,17},{16,16,5},{14,3,19}};
+		int result = minCost(costs);
+		System.out.println(result);
+	}
+
+}

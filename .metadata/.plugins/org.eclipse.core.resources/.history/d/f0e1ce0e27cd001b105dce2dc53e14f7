@@ -1,0 +1,40 @@
+package DynamicProgramming;
+
+public class _221_MaximalSquare {
+	
+	private static int maximalSquare(char[][] matrix) {
+		if(matrix==null || matrix.length==0 || matrix[0].length==0)return 0;
+		int m = matrix.length;int n = matrix[0].length;
+		int max=0;
+		boolean flag = false;
+		for(int i=0;i<m;i++) {
+			for(int j=0;j<n;j++) {
+				if(matrix[i][j] == '1') {
+					int curr=1;
+					flag = true;
+					while(i+curr < m && j+curr < n && flag) {
+						//column
+						for(int k=i+curr;k>=i;k--) {
+							if(matrix[k][j+curr] != '1') flag = false;
+						}
+						//row
+						for(int k=j+curr;k>=j;k--) {
+							if(matrix[i+curr][k] != '1') flag = false;
+						}
+						if(flag)curr++;
+					}
+					max=Math.max(max, curr);
+				}
+			}
+		}
+		return max*max;
+	}
+
+	public static void main(String[] args) {
+//		char[][] matrix = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
+		char[][] matrix = {{'0','1'},{'1','0'}};
+		int result = maximalSquare(matrix);
+		System.out.println(result);
+	}
+
+}

@@ -1,0 +1,37 @@
+package DynamicProgramming;
+
+//Solution-1: Brute force -> recursion choose or dont choose
+/* T - O(amount* 2^n) ; S - (amount/ min of coins)
+ * 1. For every coin, we have option to choose or not choose
+ * 2. 
+ */
+
+public class _322_CoinChange {
+	
+	private static int coinChange(int[] coins, int amount) {
+		if(coins == null || coins.length==0)return 0;
+		return helper(coins, amount, 0, 0);
+	}
+	
+	private static int helper(int[] coins, int amount, int index, int count) {
+		//base
+		if(amount == 0)return count;
+		if(index == coins.length || amount<0)return -1;
+		//choose
+		int case1 = helper(coins, amount-coins[index], index, count+1);
+		//dont choose
+		int case2 = helper(coins, amount, index+1, count);
+		
+		if(case1 == -1)return case2;
+		if(case2 == -1)return case1;
+		return Math.min(case1, case2);
+	}
+
+	public static void main(String[] args) {
+		int[] coins = {1,2,5};
+		int amount = 11;
+		int result = coinChange(coins,amount);
+		System.out.println(result);
+	}
+
+}

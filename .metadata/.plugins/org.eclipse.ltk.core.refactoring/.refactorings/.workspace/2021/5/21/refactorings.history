@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;BinarySearch&apos;" deleteContents="false" description="Delete resource &apos;BinarySearch&apos;" element1="/BinarySearch" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1621616262296"/>&#x0A;<refactoring comment="Rename resource &apos;BinarySearch&apos; to &apos;Leetcode&apos;" description="Rename resource &apos;BinarySearch&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/BinarySearch" name="Leetcode" stamp="1621618644446" updateReferences="true"/>
+</session>
