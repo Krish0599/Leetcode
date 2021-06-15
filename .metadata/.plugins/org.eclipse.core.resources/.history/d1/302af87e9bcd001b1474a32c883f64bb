@@ -1,0 +1,19 @@
+package DynamicProgramming;
+
+import java.util.HashSet;
+
+public class _139_WordBreak {
+	static HashSet<String> set;
+	private static boolean wordBreak(String s, String[] wordDict) {
+		if(s==null || s.length()==0)return false;
+		set = new HashSet<>(wordDict);
+	}
+
+	public static void main(String[] args) {
+		String s = "leetcode";
+		String[] wordDict = {"leet","code"};
+		boolean result = wordBreak(s, wordDict);
+		System.out.println(result);
+	}
+
+}

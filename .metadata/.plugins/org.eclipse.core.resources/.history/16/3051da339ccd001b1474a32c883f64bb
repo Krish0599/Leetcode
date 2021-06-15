@@ -1,0 +1,33 @@
+package DynamicProgramming;
+
+import java.util.HashSet;
+
+public class _139_WordBreak {
+	static HashSet<String> set = null;
+	private static boolean wordBreak(String s, String[] wordDict) {
+		if(s==null || s.length()==0)return false;
+		for(String word: wordDict) {
+			System.out.println(word);
+			set.add(word);
+		}
+		return helper(s);
+	}
+	
+	private static boolean helper(String s) {
+		//base
+		if(s.length() == 0)return true;
+		//logic
+		for(int i=0;i<=s.length();i++) {
+			if(set.contains(s.substring(0, i)) && helper(s.substring(i)))return true;
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+		String s = "leetcode";
+		String[] wordDict = {"leet","code"};
+		boolean result = wordBreak(s, wordDict);
+		System.out.println(result);
+	}
+
+}

@@ -1,0 +1,12 @@
+package DynamicProgramming;
+
+public class _139_WordBreak {
+
+	public static void main(String[] args) {
+		String s = "leetcode";
+		String[] wordDict = {"leet","code"};
+		boolean result = wordBreak(s, wordDict);
+		System.out.println(result);
+	}
+
+}

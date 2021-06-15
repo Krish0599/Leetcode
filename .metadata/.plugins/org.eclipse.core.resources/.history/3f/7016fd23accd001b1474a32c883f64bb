@@ -1,0 +1,51 @@
+package DynamicProgramming;
+
+import java.util.HashSet;
+	//Brute force
+	/*T - O(2^n) ; S - O(n)
+	 * 1. convert wordDict to set for O(1) lookup.
+	 * 2. At every step we can choose to split or not split
+	 * 3. if set contains prefix string and recursion of string suffix, then return true.
+	 * 4. as the string keeps decreasing, base case is s.len ==0 then return true.
+	 */
+
+public class _139_WordBreak {
+	
+	private static boolean wordBreak(String s, String[] wordDict) {
+		if(s==null || s.length()==0)return false;
+		HashSet <String> set = new HashSet<>();
+		for(String word: wordDict) {
+			set.add(word);
+		}
+		
+	}
+	/*
+	static HashSet<String> set;
+	private static boolean wordBreak(String s, String[] wordDict) {
+		if(s==null || s.length()==0)return false;
+		set = new HashSet<>();
+		for(String word: wordDict) {
+			set.add(word);
+		}
+		return helper(s);
+	}
+	
+	private static boolean helper(String s) {
+		//base
+		if(s.length() == 0)return true;
+		//logic
+		for(int i=0;i<=s.length();i++) {
+			if(set.contains(s.substring(0, i)) && helper(s.substring(i)))return true;
+		}
+		return false;
+	}
+	*/
+
+	public static void main(String[] args) {
+		String s = "leetcode";
+		String[] wordDict = {"leet","code"};
+		boolean result = wordBreak(s, wordDict);
+		System.out.println(result);
+	}
+
+}
