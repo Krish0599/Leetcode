@@ -7,7 +7,7 @@ package DynamicProgramming;
 */
 
 //Solution-2: DP of amount collected
-/* T - O(m*2) ; S - O(m*2)
+/* T - O(n) ; S - O(n)
 * 1. dp first row -> 0, nums[0]
 * 2. if house not choosen, it should be max of previous rows as the amount is to be maximised.
 * 3. if house choose, it will be previous not choosen + current house amount.
@@ -24,15 +24,15 @@ public class _198_HouseRobber {
 	
 	//with no extra space
 	private static int rob(int[] nums) {
-		if(nums==null || nums.length==0)return 0;
-		int excl=0;
-		int incl = nums[0];
-		for(int i=1;i<nums.length;i++) {
-			int temp = excl;
-			excl = Math.max(excl, incl);
-			incl = temp+nums[i-1];
-		}
-		return Math.max(incl, excl);
+		int prev_skip=0;
+		int prev_taken=0;
+
+	    for(int i=0; i<nums.length; i++){
+	        int temp = prev_skip; // storing prev value when not choosed
+	        prev_skip = Math.max(prev_skip, prev_taken); // when not choosing current value we have to take max from the prev skip and take
+	        prev_taken = temp+nums[i]; // when choosing add prev value when prev skipped  and add current value
+	    }
+	    return Math.max(prev_skip,prev_taken);
 	}
 	
 	/*
@@ -48,6 +48,7 @@ public class _198_HouseRobber {
 		return Math.max(dp[dp.length-1][0], dp[dp.length-1][1]);
 	}
 	*/
+	
 	
 	/*
 	//Brute force -> recursion
@@ -68,7 +69,7 @@ public class _198_HouseRobber {
 	*/
 
 	public static void main(String[] args) {
-		int[] nums = {1,2,3,1};
+		int[] nums = {2,3,2};
 		int result = rob(nums);
 		System.out.println(result);
 	}
