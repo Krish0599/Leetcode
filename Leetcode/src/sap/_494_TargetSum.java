@@ -52,5 +52,4 @@ public class _494_TargetSum {
 		int res = findTargetSumWays(nums, target);
 		System.out.println(res);
 	}
-
 }
